@@ -1,0 +1,54 @@
+yum install wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
+
+yum install unzip
+
+https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/ansible-2.9.6-1.el7.ans.noarch.rpm
+
+.ssh/config
+
+curl -sSL https://github.com/openshift/openshift-ansible/archive/openshift-ansible-3.11.187-1.zip > openshift-ansible-3.11.187-1.zip
+
+/etc/ansible/hosts
+
+ansible-playbook /home/vagrant/openshift-ansible/playbooks/prerequisites.yml
+
+```
+PLAY RECAP **************************************************************************
+localhost                  : ok=11   changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+master.example.com         : ok=86   changed=21   unreachable=0    failed=0    skipped=125  rescued=0    ignored=0
+node01.example.com         : ok=60   changed=21   unreachable=0    failed=0    skipped=108  rescued=0    ignored=0
+node02.example.com         : ok=60   changed=21   unreachable=0    failed=0    skipped=108  rescued=0    ignored=0
+```
+
+
+failed: [master.example.com] (item=etcd) => {"ansible_loop_var": "item", "attempts": 72, "changed": false, "item": "etcd", "msg": {"cmd": "/bin/oc get pod master-etcd-master.example.com -o json -n kube-system", "results": [{}], "returncode": 1, "stderr": "The connection to the server master.example.com:8443 was refused - did you specify the right host or port?\n", "stdout": ""}}
+
+
+127.0.0.1       master.example.com      master
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+## vagrant-hostmanager-start
+192.168.11.102  node02.example.com
+
+192.168.11.100  master.example.com
+
+192.168.11.101  node01.example.com
+
+## vagrant-hostmanager-end
+
+
+
+
+
+
+TASK [openshift_control_plane : Report control plane errors] ********************************************************************************
+fatal: [master.example.com]: FAILED! => {"changed": false, "msg": "Control plane pods didn't come up and become ready"}
+
+NO MORE HOSTS LEFT **************************************************************************************************************************
+
+PLAY RECAP **********************************************************************************************************************************
+localhost                  : ok=11   changed=0    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+master.example.com         : ok=303  changed=51   unreachable=0    failed=1    skipped=251  rescued=0    ignored=4
+node01.example.com         : ok=106  changed=15   unreachable=0    failed=0    skipped=98   rescued=0    ignored=0
+node02.example.com         : ok=106  changed=15   unreachable=0    failed=0    skipped=98   rescued=0    ignored=0

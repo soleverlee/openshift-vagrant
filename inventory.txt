@@ -1,0 +1,21 @@
+[OSEv3:children]
+masters
+nodes
+etcd
+
+[OSEv3:vars]
+ansible_ssh_user=vagrant
+ansible_become=true
+openshift_deployment_type=origin
+openshift_disable_check=disk_availability,memory_availability,docker_storage,docker_image_availability
+
+[masters]
+master.example.com ansible_ssh_private_key_file="/home/vagrant/.ssh/master.key"
+
+[etcd]
+master.example.com ansible_ssh_private_key_file="/home/vagrant/.ssh/master.key"
+
+[nodes]
+master.example.com openshift_node_group_name='node-config-master-infra'  ansible_ssh_private_key_file="/home/vagrant/.ssh/master.key"
+node01.example.com openshift_node_group_name='node-config-compute' ansible_ssh_private_key_file="/home/vagrant/.ssh/node01.key"
+node02.example.com openshift_node_group_name='node-config-compute' ansible_ssh_private_key_file="/home/vagrant/.ssh/node02.key"
