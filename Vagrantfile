@@ -37,7 +37,9 @@ Vagrant.configure("2") do |config|
             vb.memory = "4096"
             vb.cpus = 2
         end
+        
         master.vm.provision "shell", inline: <<-SHELL
+            hostnamectl set-hostname master.example.com
             /vagrant/master.sh
         SHELL
         if File.exist?(".vagrant/machines/master/virtualbox/private_key")

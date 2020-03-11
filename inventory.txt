@@ -16,6 +16,6 @@ master.example.com ansible_ssh_private_key_file="/home/vagrant/.ssh/master.key"
 master.example.com ansible_ssh_private_key_file="/home/vagrant/.ssh/master.key"
 
 [nodes]
-master.example.com openshift_node_group_name='node-config-master-infra'  ansible_ssh_private_key_file="/home/vagrant/.ssh/master.key"
+master.example.com containerized=false etcd_ip=192.168.11.100 openshift_node_group_name='node-config-master-infra'  ansible_ssh_private_key_file="/home/vagrant/.ssh/master.key"
 node01.example.com openshift_node_group_name='node-config-compute' ansible_ssh_private_key_file="/home/vagrant/.ssh/node01.key"
 node02.example.com openshift_node_group_name='node-config-compute' ansible_ssh_private_key_file="/home/vagrant/.ssh/node02.key"
